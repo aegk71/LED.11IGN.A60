@@ -8,12 +8,18 @@ ohne Framework, ohne externe Abhängigkeiten und ohne Tracking. Seitensprache: E
 ## Aufbau
 
 ```
-index.html            Die komplette Seite (HTML + CSS in einer Datei)
-assets/lethe-logo.jpg Logo für die Kopfleiste
-assets/hero-ship.jpg  Hintergrundbild der Begrüßung
-assets/favicon.svg    Browser-Tab-Symbol
-files/                Alle Download-Dokumente (PDF, DWG, XLSM)
-files/media/          Fotos und Videos
+index.html               Die komplette Seite (HTML + CSS in einer Datei)
+files/                   Alle Download-Dokumente (PDF, DWG, XLSM)
+files/media/             Fotos und Videos
+
+assets/lethe-logo.jpg    Logo für die Kopfleiste
+assets/hero-ship.jpg     Hintergrundbild der Begrüßung
+assets/favicon.svg       Browser-Tab-Symbol
+assets/qr-poster.png     QR-Poster im Handy-Hochformat
+assets/email-banner.png  Banner für den Mailversand
+
+tools/                   Skripte, die Poster und Banner erzeugen
+EMAIL.md                 Vorlagen und Hinweise für den Mailversand
 ```
 
 ## Was noch ausgefüllt werden muss
@@ -168,6 +174,20 @@ weißer Fläche und nicht auf dem Schiffsbild.
 Für großformatigen Druck (Aufsteller, Roll-up) in `tools/make-qr-poster.py` oben
 `W, H` hochsetzen — die Maße sind relativ dazu nicht automatisch, die Y-Werte im
 Skript müssten dann mitwachsen. Sag Bescheid, wenn du eine Druckvariante brauchst.
+
+## Banner für den Mailversand
+
+`assets/email-banner.png` (1200 × 560, Anzeige mit `width="600"`), erzeugt von
+`tools/make-email-banner.py`. Fertige Textbausteine, HTML-Schnipsel und die
+Fallstricke beim Mailversand stehen in **[EMAIL.md](EMAIL.md)**.
+
+```bash
+python tools/make-email-banner.py
+```
+
+Wichtig bei beiden Skripten: Ändert sich die Adresse der Seite, muss oben die
+Konstante `URL` angepasst und die Grafik neu erzeugt werden — sonst zeigt der
+QR-Code weiter auf die alte Adresse.
 
 ## Hinweis zur Sichtbarkeit
 

@@ -107,8 +107,8 @@ logo_h = 68
 logo = logo.resize((round(logo.width * logo_h / logo.height), logo_h), Image.LANCZOS)
 poster.paste(logo, (64, (BAR_H - logo_h) // 2))
 
-# Badge oben rechts
-badge_font = BOLD(28)
+# Badge oben rechts - traegt seit dem Umbenennen die Typbezeichnung
+badge_font = BOLD(30)
 badge_text = "LED.11IGN.A60"
 badge_tracking = 3
 badge_w = sum(draw.textlength(c, font=badge_font) + badge_tracking for c in badge_text) - badge_tracking
@@ -123,8 +123,8 @@ tracked(draw, bx0 + pad_x, by0 + pad_y - 4, badge_text, badge_font, MAGENTA, bad
 # ---------------------------------------------------------------- Headline
 
 tracked_center(draw, 812, "DOCUMENTS FOR DOWNLOAD", BOLD(26), KICKER, 4)
-center(draw, 858, "LED.11IGN.A60", BOLD(84), WHITE)
-center(draw, 968, "A-60 Sliding Door System", REG(38), (219, 228, 240))
+center(draw, 862, "A-60 Sliding Door System", BOLD(66), WHITE)
+center(draw, 962, "Single-leaf sliding fire door", REG(38), (219, 228, 240))
 draw.rectangle([(W - 130) / 2, 1040, (W + 130) / 2, 1047], fill=MAGENTA)
 
 # ---------------------------------------------------------------- QR-Code
