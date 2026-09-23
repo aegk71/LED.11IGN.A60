@@ -13,7 +13,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 # ---------------------------------------------------------------- Konfiguration
 
-URL = "https://aegk71.github.io/LED-SMM2026/"
+URL = "https://aegk71.github.io/LED.11IGN.A60/"
 
 W, H = 1080, 1920
 
@@ -107,9 +107,9 @@ logo_h = 68
 logo = logo.resize((round(logo.width * logo_h / logo.height), logo_h), Image.LANCZOS)
 poster.paste(logo, (64, (BAR_H - logo_h) // 2))
 
-# Badge "SMM 2026"
+# Badge oben rechts
 badge_font = BOLD(28)
-badge_text = "SMM 2026"
+badge_text = "LED.11IGN.A60"
 badge_tracking = 3
 badge_w = sum(draw.textlength(c, font=badge_font) + badge_tracking for c in badge_text) - badge_tracking
 pad_x, pad_y = 30, 16
@@ -162,7 +162,7 @@ print(f"QR: {modules} Module x {box} px = {qr_img.width} px, Version {qr.version
 
 # ---------------------------------------------------------------- Fusszeile
 
-center(draw, cy + CARD + 42, "aegk71.github.io/LED-SMM2026", SEMI(32), WHITE)
+center(draw, cy + CARD + 42, "aegk71.github.io/LED.11IGN.A60", SEMI(32), WHITE)
 center(draw, H - 74, "Lethe Exterior Doors GmbH  ·  Bremen, Germany  ·  lethe-bremen.de",
        REG(25), MUTED)
 
