@@ -8,18 +8,19 @@ ohne Framework, ohne externe Abhängigkeiten und ohne Tracking. Seitensprache: E
 ## Aufbau
 
 ```
-index.html               Die komplette Seite (HTML + CSS in einer Datei)
-files/                   Alle Download-Dokumente (PDF, DWG, XLSM)
-files/media/             Fotos und Videos
+index.html                   Die komplette Seite (HTML + CSS in einer Datei)
+files/                       Alle Download-Dokumente (PDF, DWG, XLSM)
+files/media/                 Fotos und Videos
 
-assets/lethe-logo.jpg    Logo für die Kopfleiste
-assets/hero-ship.jpg     Hintergrundbild der Begrüßung
-assets/favicon.svg       Browser-Tab-Symbol
-assets/qr-poster.png     QR-Poster im Handy-Hochformat
-assets/email-banner.png  Banner für den Mailversand
+assets/lethe-logo.jpg        Logo für die Kopfleiste
+assets/hero-ship.jpg         Hintergrundbild der Begrüßung
+assets/favicon.svg           Browser-Tab-Symbol
+assets/apple-touch-icon.png  Icon für den iPhone-Home-Bildschirm
+assets/qr-poster.png         QR-Poster im Handy-Hochformat
+assets/email-banner.png      Banner für den Mailversand
 
-tools/                   Skripte, die Poster und Banner erzeugen
-EMAIL.md                 Vorlagen und Hinweise für den Mailversand
+tools/                       Skripte für Poster, Banner und Icon
+EMAIL.md                     Vorlagen und Hinweise für den Mailversand
 ```
 
 ## Was noch ausgefüllt werden muss
@@ -188,6 +189,29 @@ python tools/make-email-banner.py
 Wichtig bei beiden Skripten: Ändert sich die Adresse der Seite, muss oben die
 Konstante `URL` angepasst und die Grafik neu erzeugt werden — sonst zeigt der
 QR-Code weiter auf die alte Adresse.
+
+## Icon für den iPhone-Home-Bildschirm
+
+Im Safari über das Teilen-Menü → **Zum Home-Bildschirm** lässt sich die Seite wie eine
+App ablegen. Das Icon ist `assets/apple-touch-icon.png` (180 × 180, Nachtblau-Verlauf mit
+Schiff und magentafarbener Linie), der Name darunter steht in `index.html`
+(`apple-mobile-web-app-title`, aktuell „Lethe A-60").
+
+Bewusst **ohne** Manifest, Vollbildmodus und Service Worker: Im Vollbildmodus öffnen sich
+PDFs ohne Zurück-Knopf, und zwischengespeicherte Dokumente wären nach einem Tausch
+veraltet. So bleibt es eine normale Seite in Safari.
+
+Neu erzeugen:
+
+```bash
+pip install pillow numpy
+python tools/make-app-icon.py
+```
+
+Die Silhouette kommt aus `tools/ship-icon-source.png`. Mit `--report-set ORDNER` entsteht
+zusätzlich dieselbe Grafik auf dem dunklen Grund der Berichts-App (180, 192, 512 und
+512 maskable). Ein bereits angelegtes Icon aktualisiert sich nicht von selbst — zum
+Testen auf dem iPhone erst löschen, dann neu anlegen.
 
 ## Hinweis zur Sichtbarkeit
 
